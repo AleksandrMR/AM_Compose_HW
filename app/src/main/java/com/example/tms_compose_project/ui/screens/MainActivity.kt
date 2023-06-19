@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.ui.platform.LocalContext
 import com.example.tms_compose_project.data.posts
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +14,10 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Surface(color = MaterialTheme.colors.background) {
-                AllPosts(posts)
+                AllPosts(
+                    posts = posts,
+                    context = LocalContext.current
+                )
             }
         }
     }

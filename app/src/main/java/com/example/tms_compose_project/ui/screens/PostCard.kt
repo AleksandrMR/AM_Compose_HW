@@ -1,5 +1,6 @@
 package com.example.tms_compose_project
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -10,25 +11,33 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PostCard(name: String, description: String, image: Int) {
+fun PostCard(
+    name: String,
+    description: String,
+    image: Int,
+    onClick: (msg: String) -> Unit
+) {
     Card(
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight(),
+            .wrapContentHeight()
+            .padding(all = 10.dp),
         shape = MaterialTheme.shapes.medium,
         elevation = 5.dp,
-        backgroundColor = MaterialTheme.colors.surface
+        backgroundColor = MaterialTheme.colors.surface,
+        onClick = { onClick }
     ) {
-
         Row(
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically
         ) {
 
             Image(
                 painter = painterResource(id = image),
                 contentDescription = null,
-                modifier = Modifier.size(130.dp)
+                modifier = Modifier
+                    .size(130.dp)
                     .padding(8.dp),
                 contentScale = ContentScale.Fit,
             )
@@ -42,6 +51,7 @@ fun PostCard(name: String, description: String, image: Int) {
                 Text(
                     text = description,
                     style = MaterialTheme.typography.body2,
+                    color = MaterialTheme.colors.error
                 )
             }
 
