@@ -44,12 +44,11 @@ fun AllPosts(
             PostCard(
                 name = post.name,
                 description = post.description,
-                image = post.imageRes,
-                onClick = {
-                    //TODO add implementation
-                    //Toast.makeText(context, "${post.id}", Toast.LENGTH_SHORT).show()
-                }
-            )
+                image = post.imageRes
+            ) {
+                //TODO add implementation
+                Toast.makeText(context, "${post.id}", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

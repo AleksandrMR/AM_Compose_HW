@@ -2,6 +2,7 @@ package com.example.tms_compose_project
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -17,7 +18,7 @@ fun PostCard(
     name: String,
     description: String,
     image: Int,
-    onClick: (msg: String) -> Unit
+    onClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -27,7 +28,7 @@ fun PostCard(
         shape = MaterialTheme.shapes.medium,
         elevation = 5.dp,
         backgroundColor = MaterialTheme.colors.surface,
-        onClick = { onClick }
+        onClick = { onClick() }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
